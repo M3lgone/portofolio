@@ -3,9 +3,9 @@ import Navbar from "@/components/Navbar";
 import Projects from "@/components/Projects";
 import About from "@/components/About";
 import Experience from "@/components/Experience";
+import TechStack from "@/components/TechStack";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
-import SkillsMarquee from "@/components/SkillsMarquee";
 
 export default function Home() {
   return (
@@ -15,6 +15,7 @@ export default function Home() {
       <Experience />
       <Projects />
       <About />
+      <TechStack />
       <Contact />
       <Footer />
     </main>

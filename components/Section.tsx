@@ -8,7 +8,7 @@ export default function Section({
   id?: string;
 }) {
   return (
-    <section id={id} className="py-40">
+    <section id={id} className="py-20 md:py-28">
       <Container>
         {children}
       </Container>

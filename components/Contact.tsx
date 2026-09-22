@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import Section from "./Section";
-import { Mail, Github, Linkedin, Twitter } from "lucide-react";
+import { Mail, Github, Linkedin, Globe } from "lucide-react";
 import { useState } from "react";
 
 export default function Contact() {
@@ -29,7 +29,7 @@ export default function Contact() {
         </h2>
 
         <p className="text-[#a9b1d6] text-sm md:text-base leading-relaxed max-w-xl mb-6 md:mb-10">
-          I'm always open to new opportunities, collaborations or just a good conversation about tech. Feel free to reach out.
+          Full-stack developer open to a first opportunity. Feel free to reach out about projects, roles or collaborations.
         </p>
 
         {/* Links limpios estilo Ryan Evans */}
@@ -63,7 +63,7 @@ export default function Contact() {
           </motion.a>
 
           <motion.a
-            href="https://www.linkedin.com/in/ismael-gonzalez-457820398"
+            href="https://www.linkedin.com/in/ismael-gonzalez-nestal/"
             target="_blank"
             rel="noopener noreferrer"
             className="group flex items-center gap-3 px-4 md:px-5 py-3 md:py-4 rounded-lg border border-white/10 hover:border-[#527dc1] transition-all hover:bg-[#527dc1]/5"
@@ -72,21 +72,21 @@ export default function Contact() {
           >
             <Linkedin size={18} className="md:w-5 md:h-5 text-[#527dc1] flex-shrink-0" />
             <span className="text-[#c0caf5] group-hover:text-[#527dc1] transition text-sm md:text-base">
-              IsmaDEV
+              Ismael Gonzalez Nestal
             </span>
           </motion.a>
 
           <motion.a
-            href="https://twitter.com/tu-usuario"
+            href="https://isma.dev"
             target="_blank"
             rel="noopener noreferrer"
             className="group flex items-center gap-3 px-4 md:px-5 py-3 md:py-4 rounded-lg border border-white/10 hover:border-[#527dc1] transition-all hover:bg-[#527dc1]/5"
             whileHover={{ x: 5 }}
             transition={{ duration: 0.2 }}
           >
-            <Twitter size={18} className="md:w-5 md:h-5 text-[#527dc1] flex-shrink-0" />
+            <Globe size={18} className="md:w-5 md:h-5 text-[#527dc1] flex-shrink-0" />
             <span className="text-[#c0caf5] group-hover:text-[#527dc1] transition text-sm md:text-base">
-              IsmaDEV
+              isma.dev
             </span>
           </motion.a>
 

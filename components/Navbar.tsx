@@ -94,6 +94,14 @@ export default function Navbar() {
           </motion.a>
 
           <motion.a
+            href="#stack"
+            className="relative hover:text-[#7aa2f7] transition"
+            ref={(el) => { linkRefs.current["stack"] = el; }}
+          >
+            Stack
+          </motion.a>
+
+          <motion.a
             href="#contact"
             className="relative hover:text-[#7aa2f7] transition"
             ref={(el) => { linkRefs.current["contact"] = el; }}
@@ -134,6 +142,9 @@ export default function Navbar() {
               </a>
               <a href="#about-section" onClick={handleLinkClick} className="text-base py-2 transition text-[#a9b1d6] hover:text-[#7aa2f7]">
                 About
+              </a>
+              <a href="#stack" onClick={handleLinkClick} className="text-base py-2 transition text-[#a9b1d6] hover:text-[#7aa2f7]">
+                Stack
               </a>
               <a href="#contact" onClick={handleLinkClick} className="text-base py-2 transition text-[#a9b1d6] hover:text-[#7aa2f7]">
                 Contact

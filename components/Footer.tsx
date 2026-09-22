@@ -5,7 +5,7 @@ export default function Footer() {
     <footer className="py-10 border-t border-white/10 mt-20">
       <Container>
         <div className="text-center text-sm text-[#a9b1d6]/50">
-          <p>© {new Date().getFullYear()} Isma.dev</p>
+          <p>© {new Date().getFullYear()} Isma.dev · PHP · Laravel · React</p>
         </div>
       </Container>
     </footer>

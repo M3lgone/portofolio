@@ -44,7 +44,7 @@ export default function About() {
               </h3>
               
               <p className="text-[#a9b1d6] text-sm leading-relaxed mb-3 md:mb-4">
-                I'm currently learning and building projects with modern web technologies.
+                I&apos;m currently training as a full-stack developer, focused on PHP, Laravel, MySQL and React.
               </p>
 
               {/* Location & Status */}
@@ -55,7 +55,7 @@ export default function About() {
                 </div>
                 <div className="flex items-center gap-2 text-[#a9b1d6]">
                   <Briefcase size={16} className="text-[#527dc1]" />
-                  <span>Developer in Progress</span>
+                  <span>Full-Stack Developer</span>
                 </div>
               </div>
             </div>
@@ -77,11 +77,11 @@ export default function About() {
             </h2>
             
             <p className="text-[#a9b1d6] text-sm md:text-base leading-relaxed mb-3 md:mb-4">
-              Hi, I'm Isma — a developer who believes technology should feel human. I love building clean, modern websites that combine creativity with clarity. My goal is not just to write code, but to create experiences that feel simple, intuitive and meaningful.
+              Hi, I&apos;m Isma — a full-stack developer focused on PHP, Laravel, MySQL and React. I enjoy building clean, well-organized applications where the backend logic is solid and the interface stays simple and clear.
             </p>
             
             <p className="text-[#a9b1d6] text-sm md:text-base leading-relaxed">
-              I come from diverse experiences that shaped my way of solving problems and understanding people — something I bring into every project I build.
+              I&apos;m coming from operational roles centered on organization and incident management, so I&apos;m used to solving problems, working in a team and adapting quickly. Now I apply that mindset to development: understanding requirements, structuring the code and learning something new with every project.
             </p>
           </div>
         </motion.div>

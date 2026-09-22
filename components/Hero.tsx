@@ -6,20 +6,44 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import Container from "./Container";
 import TypingEffect from "./TypingEffect";
 import {
+  SiPhp,
+  SiLaravel,
+  SiMysql,
   SiReact,
   SiNextdotjs,
   SiTypescript,
-  SiJavascript,
   SiTailwindcss,
-  SiNodedotjs,
   SiGit,
-  SiFramer,
 } from "react-icons/si";
 
 export default function Hero() {
   const { scrollY } = useScroll();
 
   const skills = [
+    {
+      name: "PHP",
+      icon: SiPhp,
+      color: "from-[#777bb4]/20 to-[#777bb4]/10",
+      border: "border-[#777bb4]/30",
+      text: "text-[#777bb4]",
+      iconColor: "#777bb4",
+    },
+    {
+      name: "Laravel",
+      icon: SiLaravel,
+      color: "from-[#ff2d20]/20 to-[#ff2d20]/10",
+      border: "border-[#ff2d20]/30",
+      text: "text-[#ff2d20]",
+      iconColor: "#ff2d20",
+    },
+    {
+      name: "MySQL",
+      icon: SiMysql,
+      color: "from-[#4479a1]/20 to-[#4479a1]/10",
+      border: "border-[#4479a1]/30",
+      text: "text-[#4479a1]",
+      iconColor: "#4479a1",
+    },
     {
       name: "React",
       icon: SiReact,
@@ -45,14 +69,6 @@ export default function Hero() {
       iconColor: "#3178c6",
     },
     {
-      name: "JavaScript",
-      icon: SiJavascript,
-      color: "from-[#f7df1e]/20 to-[#f7df1e]/10",
-      border: "border-[#f7df1e]/30",
-      text: "text-[#f7df1e]",
-      iconColor: "#f7df1e",
-    },
-    {
       name: "Tailwind CSS",
       icon: SiTailwindcss,
       color: "from-[#06b6d4]/20 to-[#06b6d4]/10",
@@ -61,28 +77,12 @@ export default function Hero() {
       iconColor: "#06b6d4",
     },
     {
-      name: "Node.js",
-      icon: SiNodedotjs,
-      color: "from-[#68a063]/20 to-[#68a063]/10",
-      border: "border-[#68a063]/30",
-      text: "text-[#68a063]",
-      iconColor: "#68a063",
-    },
-    {
       name: "Git",
       icon: SiGit,
       color: "from-[#f05032]/20 to-[#f05032]/10",
       border: "border-[#f05032]/30",
       text: "text-[#f05032]",
       iconColor: "#f05032",
-    },
-    {
-      name: "Framer Motion",
-      icon: SiFramer,
-      color: "from-[#bb9af7]/20 to-[#bb9af7]/10",
-      border: "border-[#bb9af7]/30",
-      text: "text-[#bb9af7]",
-      iconColor: "#bb9af7",
     },
   ];
 
@@ -109,17 +109,21 @@ export default function Hero() {
 
       <Container>
         <div className="max-w-3xl">
-          <h1 className="text-4xl md:text-6xl font-semibold leading-tight tracking-tight bg-gradient-to-r from-[#7aa2f7] to-[#bb9af7] bg-clip-text text-transparent mb-6">
-            Isma — Fullstack Developer
+          <h1 className="text-4xl md:text-6xl font-semibold leading-tight tracking-tight bg-gradient-to-r from-[#7aa2f7] to-[#bb9af7] bg-clip-text text-transparent mb-4">
+            Isma — Full-Stack Developer
           </h1>
+
+          <p className="text-base md:text-lg font-medium text-[#c0caf5] mb-4">
+            PHP · Laravel · MySQL · REST APIs · React
+          </p>
 
           <p className="text-lg md:text-xl text-gray-400 leading-relaxed">
             <TypingEffect
-              text="Building real-world projects, learning by doing and growing step by step into a professional developer."
+              text="Developer building full-stack projects with PHP, Laravel and React — learning by doing."
               speed={30}
             />
           </p>
-          <div className="relative inline-block mt-8">
+          <div className="relative inline-flex flex-wrap items-center gap-3 md:gap-4 mt-8">
             <motion.a
               href="#projects"
               onMouseEnter={() => setIsHovering(true)}
@@ -129,6 +133,15 @@ export default function Hero() {
               whileTap={{ scale: 0.95 }}
             >
               View Projects
+            </motion.a>
+
+            <motion.a
+              href="#contact"
+              className="inline-block px-6 md:px-8 py-2.5 md:py-3 bg-transparent border border-[#527dc1] text-[#527dc1] rounded-lg font-medium hover:bg-[#527dc1]/10 transition-all hover:scale-105 relative z-20 text-sm md:text-base"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              Contact
             </motion.a>
 
             {/* Preview Cards - Solo en desktop */}

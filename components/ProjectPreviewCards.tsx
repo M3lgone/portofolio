@@ -10,28 +10,28 @@ export default function ProjectPreviewCards({ isHovered }: ProjectPreviewCardsPr
 const projects = [
   {
     id: 1,
-    name: "Project One",
+    name: "To Do Ghost",
     color: "from-[#61dafb]/30 to-[#bb9af7]/30",
     position: "top-[-200px] left-[-280px]",
     rotation: -15,
   },
   {
     id: 2,
-    name: "Project Two",
+    name: "Battle Odyssey · Livewire",
     color: "from-[#bb9af7]/30 to-[#f7768e]/30",
     position: "top-[-220px] left-[-100px]",
     rotation: -5,
   },
   {
     id: 3,
-    name: "Project Three",
+    name: "Battle Odyssey · API",
     color: "from-[#7dcfff]/30 to-[#9ece6a]/30",
     position: "top-[-220px] right-[-100px]",
     rotation: 5,
   },
   {
     id: 4,
-    name: "Project Four",
+    name: "Battle Odyssey · React",
     color: "from-[#e0af68]/30 to-[#7aa2f7]/30",
     position: "top-[-200px] right-[-280px]",
     rotation: 15,

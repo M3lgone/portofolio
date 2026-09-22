@@ -14,8 +14,8 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "Isma Dev",
-  description: "Bulding new apps",
+  title: "Isma · Full-Stack Developer",
+  description: "Full-Stack Developer — PHP, Laravel, MySQL, REST APIs and React. Practical projects and specialized training.",
 };
 
 export default function RootLayout({

@@ -24,8 +24,10 @@ body {
   font-family: var(--font-poppins), sans-serif;
 }
 
-* {
-  cursor: none !important;
+@media (pointer: fine) {
+  * {
+    cursor: none !important;
+  }
 }
 
 html {
