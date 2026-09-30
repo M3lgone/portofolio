@@ -127,7 +127,7 @@ export default function Hero() {
 
           <p className="text-lg md:text-xl text-gray-400 leading-relaxed">
             <TypingEffect
-              text="Building full-stack projects with solid backend logic and simple, clear interfaces."
+              text="Building full-stack projects with solid backend logic and modern, intuitive frontend"
               speed={30}
             />
           </p>

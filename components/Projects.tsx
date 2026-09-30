@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import Section from "./Section";
 import Image from "next/image";
-import { Github, ArrowRight } from "lucide-react";
+import { Github } from "lucide-react";
 
 type Project = {
   badge: string;
@@ -18,7 +18,7 @@ type Project = {
 
 const projects: Project[] = [
   {
-    badge: "Standalone project",
+    badge: "PHP · MVC App",
     title: "To Do Ghost",
     description:
       "Task management web app built from scratch following an MVC architecture with a custom PHP framework (Router, Controller, View). Full CRUD with business logic, status workflow (Pending → In Progress → Done), dashboard filters and JSON persistence.",
@@ -33,7 +33,7 @@ const projects: Project[] = [
     imageFit: "cover",
   },
   {
-    badge: "Battle Odyssey · Part 1 of 3",
+    badge: "Laravel · Livewire App",
     title: "Battle Odyssey — Livewire",
     description:
       "Turn-based RPG built with Laravel and Livewire: a Warrior faces three consecutive battles (Goblin → Troll → Orc boss). Reactive HP/MP components, enemy AI, battle log, rest-or-continue progression and session-persisted state.",
@@ -48,7 +48,7 @@ const projects: Project[] = [
     imageFit: "cover",
   },
   {
-    badge: "Battle Odyssey · Part 2 of 3",
+    badge: "REST API",
     title: "Battle Odyssey — REST API",
     description:
       "Decoupled REST API (JSON over /api/v1) owning the game rules and persistence: Passport Bearer authentication, player/admin roles, characters, enemies, skills, games and battles, FormRequest validation, Pest tests, Scribe docs and Docker setup.",
@@ -63,7 +63,7 @@ const projects: Project[] = [
     imageFit: "contain",
   },
   {
-    badge: "Battle Odyssey · Part 3 of 3",
+    badge: "React Client",
     title: "Battle Odyssey — React Frontend",
     description:
       "React game client consuming the REST API: reusable components, character selection with stats, animated turn-based combat with battle effects, HP/MP carry-over with Rest & Next, battle history and admin management screens.",
@@ -156,30 +156,9 @@ export default function Projects() {
   return (
     <Section id="projects">
 
-      <h2 className="text-2xl md:text-3xl font-semibold tracking-tight mb-4 md:mb-6">
+      <h2 className="text-2xl md:text-3xl font-semibold tracking-tight mb-8 md:mb-12">
         Projects
       </h2>
-
-      <p className="text-[#a9b1d6] text-sm md:text-base leading-relaxed max-w-2xl mb-6 md:mb-8">
-        A task manager built from scratch with PHP and MVC — and Battle Odyssey,
-        one game that evolved in three stages: from a Livewire app to a decoupled
-        Laravel REST API with a React frontend.
-      </p>
-
-      {/* Battle Odyssey evolution strip */}
-      <div className="flex flex-wrap items-center gap-2 md:gap-3 mb-8 md:mb-12 text-xs md:text-sm">
-        <span className="px-3 md:px-4 py-1.5 md:py-2 rounded-full bg-[#ff2d20]/10 border border-[#ff2d20]/30 text-[#ff2d20] font-medium">
-          Part 1 · Laravel + Livewire
-        </span>
-        <ArrowRight size={16} className="text-[#527dc1] flex-shrink-0" />
-        <span className="px-3 md:px-4 py-1.5 md:py-2 rounded-full bg-[#7dcfff]/10 border border-[#7dcfff]/30 text-[#7dcfff] font-medium">
-          Part 2 · Laravel REST API
-        </span>
-        <ArrowRight size={16} className="text-[#527dc1] flex-shrink-0" />
-        <span className="px-3 md:px-4 py-1.5 md:py-2 rounded-full bg-[#61dafb]/10 border border-[#61dafb]/30 text-[#61dafb] font-medium">
-          Part 3 · React Frontend
-        </span>
-      </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
         {projects.map((project) => (

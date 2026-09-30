@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import Section from "./Section";
-import { Mail, Github, Linkedin, Globe } from "lucide-react";
+import { Mail, Github, Linkedin } from "lucide-react";
 import { useState } from "react";
 
 export default function Contact() {
@@ -78,20 +78,6 @@ export default function Contact() {
             <Linkedin size={18} className="md:w-5 md:h-5 text-[#527dc1] flex-shrink-0" />
             <span className="text-[#c0caf5] group-hover:text-[#527dc1] transition text-sm md:text-base">
               Ismael González Nestal
-            </span>
-          </motion.a>
-
-          <motion.a
-            href="https://mellab.vercel.app"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group flex items-center gap-3 px-4 md:px-5 py-3 md:py-4 rounded-lg border border-white/10 hover:border-[#527dc1] transition-all hover:bg-[#527dc1]/5"
-            whileHover={{ x: 5 }}
-            transition={{ duration: 0.2 }}
-          >
-            <Globe size={18} className="md:w-5 md:h-5 text-[#527dc1] flex-shrink-0" />
-            <span className="text-[#c0caf5] group-hover:text-[#527dc1] transition text-sm md:text-base">
-              mellab.vercel.app
             </span>
           </motion.a>
 

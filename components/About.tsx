@@ -45,7 +45,7 @@ export default function About() {
               </h3>
               
               <p className="text-[#a9b1d6] text-sm leading-relaxed mb-3 md:mb-4">
-                Full-Stack Developer focused on PHP, Laravel, MySQL and React, based in Girona.
+                Full-Stack Developer based in Girona.
               </p>
 
               {/* Location & Status */}
@@ -77,16 +77,8 @@ export default function About() {
               A little bit about me
             </h2>
             
-            <p className="text-[#a9b1d6] text-sm md:text-base leading-relaxed mb-3 md:mb-4">
-              Hi, I&apos;m Ismael González — a Full-Stack Developer focused on PHP, Laravel, MySQL and React. I build applications with solid backend logic and simple, clear interfaces, from MVC projects in plain PHP to decoupled Laravel REST APIs with React frontends.
-            </p>
-            
-            <p className="text-[#a9b1d6] text-sm md:text-base leading-relaxed mb-3 md:mb-4">
-              I completed the Full Stack PHP programme at IT Academy / Barcelona Activa, with around 9 months building projects from scratch and practice oriented to a professional environment: requirements, structured code and databases.
-            </p>
-
             <p className="text-[#a9b1d6] text-sm md:text-base leading-relaxed">
-              Coming from operational roles centered on organization and incident management, I&apos;m used to solving problems, working in a team and adapting quickly. Mel Lab is my personal space to build and experiment — currently focused on the web, open to hardware, automation and AI projects.
+              Coming from operational roles centered on organization and incident management, I&apos;m used to solving problems and working in a team.
             </p>
           </div>
         </motion.div>
