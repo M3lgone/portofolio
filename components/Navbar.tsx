@@ -64,9 +64,11 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="sticky top-0 z-50 backdrop-blur-md bg-[#1a1b26]/80 border-b border-white/10">
+    <nav aria-label="Main navigation" className="sticky top-0 z-50 backdrop-blur-md bg-[#1a1b26]/80 border-b border-white/10">
       <div className="flex justify-between items-center py-4 px-6">
-        <div className="font-semibold text-[#7aa2f7]">IsmaDEV</div>
+        <a href="#hero" className="font-semibold tracking-[0.2em] text-[#7aa2f7] text-sm md:text-base" aria-label="Mel Lab — home">
+          MELAB
+        </a>
 
         <div className="nav-links relative hidden md:flex gap-6 text-sm text-[#a9b1d6]">
           <motion.a
@@ -118,7 +120,9 @@ export default function Navbar() {
 
         <button
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className="md:hidden text-[#7aa2f7] p-2"
+          aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
+          aria-expanded={mobileMenuOpen}
+          className="md:hidden text-[#7aa2f7] p-2 focus-visible:outline-2 focus-visible:outline-[#7aa2f7] rounded"
         >
           {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
         </button>

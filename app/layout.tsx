@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Poppins } from "next/font/google";
 import "./globals.css";
 import ScrollToTop from "@/components/ScrollToTop";
@@ -14,8 +14,31 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "Isma · Full-Stack Developer",
-  description: "Full-Stack Developer — PHP, Laravel, MySQL, REST APIs and React. Practical projects and specialized training.",
+  metadataBase: new URL("https://mellab.vercel.app"),
+  title: "Mel Lab — Ismael González · Full-Stack Developer",
+  description:
+    "Mel Lab by Ismael González — Full-Stack Developer focused on PHP, Laravel, MySQL and React. Real projects with REST APIs and databases, based in Girona.",
+  alternates: {
+    canonical: "https://mellab.vercel.app",
+  },
+  openGraph: {
+    title: "Mel Lab — Ismael González · Full-Stack Developer",
+    description:
+      "Full-Stack Developer focused on PHP, Laravel, MySQL and React. Real projects with REST APIs and databases.",
+    url: "https://mellab.vercel.app",
+    siteName: "Mel Lab",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Mel Lab — Ismael González · Full-Stack Developer",
+    description:
+      "Full-Stack Developer focused on PHP, Laravel, MySQL and React. Real projects with REST APIs and databases.",
+  },
+};
+
+export const viewport: Viewport = {
+  themeColor: "#1a1b26",
 };
 
 export default function RootLayout({

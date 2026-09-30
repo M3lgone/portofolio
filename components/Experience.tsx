@@ -22,14 +22,14 @@ export default function Experience() {
 
           <div>
             <h3 className="text-lg md:text-xl font-medium mb-1 md:mb-2">
-              Full-Stack Development — Training & Practical Projects
+              Full-Stack Development — Education & Practical Projects
             </h3>
             <p className="text-[#a9b1d6] text-sm md:text-base leading-relaxed">
-              Specialized training in web development with practical projects
-              built with PHP, Laravel, MySQL, REST APIs and React — from an
-              MVC task manager in plain PHP to a turn-based game developed
-              first with Livewire and then as a decoupled Laravel API with
-              a React frontend.
+              Full Stack PHP programme at IT Academy / Barcelona Activa, with
+              around 9 months building projects from scratch with PHP, Laravel,
+              MySQL, REST APIs and React — from an MVC task manager in plain
+              PHP to a turn-based game developed first with Livewire and then
+              as a decoupled Laravel API with a React frontend.
             </p>
           </div>
 

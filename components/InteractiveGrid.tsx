@@ -33,46 +33,50 @@ export default function InteractiveGrid() {
     window.addEventListener("mousemove", handleMouseMove);
 
     // Animación del grid
+    let rafId = 0;
     const animate = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-      const cols = Math.ceil(canvas.width / spacing);
-      const rows = Math.ceil(canvas.height / spacing);
+      if (!document.hidden) {
+        const cols = Math.ceil(canvas.width / spacing);
+        const rows = Math.ceil(canvas.height / spacing);
 
-      for (let i = 0; i < cols; i++) {
-        for (let j = 0; j < rows; j++) {
-          const x = i * spacing;
-          const y = j * spacing;
+        for (let i = 0; i < cols; i++) {
+          for (let j = 0; j < rows; j++) {
+            const x = i * spacing;
+            const y = j * spacing;
 
-          // Calcular distancia al mouse
-          const dx = mousePos.current.x - x;
-          const dy = mousePos.current.y - y;
-          const distance = Math.sqrt(dx * dx + dy * dy);
+            // Calcular distancia al mouse
+            const dx = mousePos.current.x - x;
+            const dy = mousePos.current.y - y;
+            const distance = Math.sqrt(dx * dx + dy * dy);
 
-          // Calcular opacidad basada en distancia
-          let opacity = 0.15;
-          let size = dotRadius;
+            // Calcular opacidad basada en distancia
+            let opacity = 0.15;
+            let size = dotRadius;
 
-          if (distance < glowRadius) {
-            const influence = 1 - distance / glowRadius;
-            opacity = 0.15 + influence * 0.6;
-            size = dotRadius + influence * 3;
+            if (distance < glowRadius) {
+              const influence = 1 - distance / glowRadius;
+              opacity = 0.15 + influence * 0.6;
+              size = dotRadius + influence * 3;
+            }
+
+            // Dibujar punto
+            ctx.beginPath();
+            ctx.arc(x, y, size, 0, Math.PI * 2);
+            ctx.fillStyle = `rgba(122, 162, 247, ${opacity})`;
+            ctx.fill();
           }
-
-          // Dibujar punto
-          ctx.beginPath();
-          ctx.arc(x, y, size, 0, Math.PI * 2);
-          ctx.fillStyle = `rgba(122, 162, 247, ${opacity})`;
-          ctx.fill();
         }
       }
 
-      requestAnimationFrame(animate);
+      rafId = requestAnimationFrame(animate);
     };
 
-    animate();
+    rafId = requestAnimationFrame(animate);
 
     return () => {
+      cancelAnimationFrame(rafId);
       window.removeEventListener("resize", resizeCanvas);
       window.removeEventListener("mousemove", handleMouseMove);
     };

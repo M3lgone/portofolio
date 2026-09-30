@@ -8,10 +8,14 @@ import { useState } from "react";
 export default function Contact() {
   const [copied, setCopied] = useState(false);
 
-  const copyEmail = () => {
-    navigator.clipboard.writeText('ismaelgn89@gmail.com');
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
+  const copyEmail = async () => {
+    try {
+      await navigator.clipboard.writeText('ismaelgn89@gmail.com');
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch {
+      window.location.href = 'mailto:ismaelgn89@gmail.com';
+    }
   };
 
   return (
@@ -25,11 +29,11 @@ export default function Contact() {
       >
 
         <h2 className="text-2xl md:text-3xl font-semibold tracking-tight mb-8 md:mb-12">
-          Come and say hi!
+          Contact
         </h2>
 
         <p className="text-[#a9b1d6] text-sm md:text-base leading-relaxed max-w-xl mb-6 md:mb-10">
-          Full-stack developer open to a first opportunity. Feel free to reach out about projects, roles or collaborations.
+          Full-Stack Developer based in Girona, open to professional opportunities. Feel free to reach out about projects, roles or collaborations.
         </p>
 
         {/* Links limpios estilo Ryan Evans */}
@@ -38,12 +42,13 @@ export default function Contact() {
           {/* Email - Click para copiar */}
           <motion.button
             onClick={copyEmail}
+            aria-label="Copy email address"
             className="group flex items-center gap-3 px-4 md:px-5 py-3 md:py-4 rounded-lg border border-white/10 hover:border-[#527dc1] transition-all hover:bg-[#527dc1]/5 w-full text-left"
             whileHover={{ x: 5 }}
             transition={{ duration: 0.2 }}
           >
             <Mail size={18} className="md:w-5 md:h-5 text-[#527dc1] flex-shrink-0" />
-            <span className="text-[#c0caf5] group-hover:text-[#527dc1] transition text-sm md:text-base truncate">
+            <span aria-live="polite" className="text-[#c0caf5] group-hover:text-[#527dc1] transition text-sm md:text-base truncate">
               {copied ? 'Email copied!' : 'ismaelgn89@gmail.com'}
             </span>
           </motion.button>
@@ -72,12 +77,12 @@ export default function Contact() {
           >
             <Linkedin size={18} className="md:w-5 md:h-5 text-[#527dc1] flex-shrink-0" />
             <span className="text-[#c0caf5] group-hover:text-[#527dc1] transition text-sm md:text-base">
-              Ismael Gonzalez Nestal
+              Ismael González Nestal
             </span>
           </motion.a>
 
           <motion.a
-            href="https://isma.dev"
+            href="https://mellab.vercel.app"
             target="_blank"
             rel="noopener noreferrer"
             className="group flex items-center gap-3 px-4 md:px-5 py-3 md:py-4 rounded-lg border border-white/10 hover:border-[#527dc1] transition-all hover:bg-[#527dc1]/5"
@@ -86,7 +91,7 @@ export default function Contact() {
           >
             <Globe size={18} className="md:w-5 md:h-5 text-[#527dc1] flex-shrink-0" />
             <span className="text-[#c0caf5] group-hover:text-[#527dc1] transition text-sm md:text-base">
-              isma.dev
+              mellab.vercel.app
             </span>
           </motion.a>
 

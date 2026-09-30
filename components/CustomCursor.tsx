@@ -6,26 +6,47 @@ import { motion } from "framer-motion";
 export default function CustomCursor() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [isPointer, setIsPointer] = useState(false);
+  const [enabled, setEnabled] = useState(false);
 
   useEffect(() => {
+    const finePointer = window.matchMedia("(pointer: fine)").matches;
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (!finePointer || reducedMotion) return;
+
+    const enableId = requestAnimationFrame(() => setEnabled(true));
+    document.body.classList.add("custom-cursor-active");
+
+    let rafId = 0;
+    let pending = false;
+    let lastEvent: MouseEvent | null = null;
+
     const handleMouseMove = (e: MouseEvent) => {
-      setMousePosition({ x: e.clientX, y: e.clientY });
-      
-      // Detectar si está sobre un elemento clickeable
-      const target = e.target as HTMLElement;
-      setIsPointer(
-        window.getComputedStyle(target).cursor === "pointer" ||
-        target.tagName === "A" ||
-        target.tagName === "BUTTON"
-      );
+      lastEvent = e;
+      if (pending) return;
+      pending = true;
+      rafId = requestAnimationFrame(() => {
+        pending = false;
+        if (!lastEvent) return;
+        setMousePosition({ x: lastEvent.clientX, y: lastEvent.clientY });
+
+        const target = lastEvent.target as HTMLElement | null;
+        setIsPointer(
+          !!target?.closest("a, button, [role='button']")
+        );
+      });
     };
 
     window.addEventListener("mousemove", handleMouseMove);
 
     return () => {
+      cancelAnimationFrame(enableId);
       window.removeEventListener("mousemove", handleMouseMove);
+      cancelAnimationFrame(rafId);
+      document.body.classList.remove("custom-cursor-active");
     };
   }, []);
+
+  if (!enabled) return null;
 
   return (
     <>

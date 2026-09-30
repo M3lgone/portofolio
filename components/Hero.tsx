@@ -18,6 +18,7 @@ import {
 
 export default function Hero() {
   const { scrollY } = useScroll();
+  const glowY = useTransform(scrollY, [0, 800], [0, 300]);
 
   const skills = [
     {
@@ -101,7 +102,7 @@ export default function Hero() {
       <motion.div
         className="absolute inset-0 -z-10 flex justify-center"
         style={{
-          y: useTransform(scrollY, [0, 800], [0, 300]),
+          y: glowY,
         }}
       >
         <div className="w-[400px] md:w-[600px] h-[400px] md:h-[600px] bg-[#7aa2f7] opacity-20 blur-[150px] rounded-full"></div>
@@ -109,17 +110,24 @@ export default function Hero() {
 
       <Container>
         <div className="max-w-3xl">
-          <h1 className="text-4xl md:text-6xl font-semibold leading-tight tracking-tight bg-gradient-to-r from-[#7aa2f7] to-[#bb9af7] bg-clip-text text-transparent mb-4">
-            Isma — Full-Stack Developer
+          <p className="text-xs md:text-sm font-semibold tracking-[0.25em] text-[#7aa2f7] mb-4">
+            MELAB · Mel Lab
+          </p>
+          <h1 className="text-4xl md:text-6xl font-semibold leading-tight tracking-tight bg-gradient-to-r from-[#7aa2f7] to-[#bb9af7] bg-clip-text text-transparent mb-3">
+            Ismael González
           </h1>
 
+          <p className="text-xl md:text-2xl font-medium text-[#c0caf5] mb-4">
+            Full-Stack Developer
+          </p>
+
           <p className="text-base md:text-lg font-medium text-[#c0caf5] mb-4">
-            PHP · Laravel · MySQL · REST APIs · React
+            PHP · Laravel · MySQL · React
           </p>
 
           <p className="text-lg md:text-xl text-gray-400 leading-relaxed">
             <TypingEffect
-              text="Developer building full-stack projects with PHP, Laravel and React — learning by doing."
+              text="Building full-stack projects with solid backend logic and simple, clear interfaces."
               speed={30}
             />
           </p>
@@ -128,8 +136,7 @@ export default function Hero() {
               href="#projects"
               onMouseEnter={() => setIsHovering(true)}
               onMouseLeave={() => setIsHovering(false)}
-              className="inline-block px-6 md:px-8 py-2.5 md:py-3 bg-[#527dc1] text-[#e0f2fe] rounded-lg font-medium hover:bg-[#4266a8] transition-all hover:scale-105 hover:shadow-lg hover:shadow-[#527dc1]/50 relative z-20 text-sm md:text-base"
-              whileHover={{ scale: 1.05 }}
+              className="inline-block px-6 md:px-8 py-2.5 md:py-3 bg-[#527dc1] text-[#e0f2fe] rounded-lg font-medium hover:bg-[#4266a8] transition-colors hover:shadow-lg hover:shadow-[#527dc1]/50 relative z-20 text-sm md:text-base focus-visible:outline-2 focus-visible:outline-[#7aa2f7]"
               whileTap={{ scale: 0.95 }}
             >
               View Projects
@@ -137,8 +144,7 @@ export default function Hero() {
 
             <motion.a
               href="#contact"
-              className="inline-block px-6 md:px-8 py-2.5 md:py-3 bg-transparent border border-[#527dc1] text-[#527dc1] rounded-lg font-medium hover:bg-[#527dc1]/10 transition-all hover:scale-105 relative z-20 text-sm md:text-base"
-              whileHover={{ scale: 1.05 }}
+              className="inline-block px-6 md:px-8 py-2.5 md:py-3 bg-transparent border border-[#7aa2f7] text-[#7aa2f7] rounded-lg font-medium hover:bg-[#527dc1]/10 transition-colors relative z-20 text-sm md:text-base focus-visible:outline-2 focus-visible:outline-[#7aa2f7]"
               whileTap={{ scale: 0.95 }}
             >
               Contact
@@ -174,7 +180,7 @@ export default function Hero() {
                   className="md:w-[18px] md:h-[18px]"
                   style={{ color: skill.iconColor }}
                 />
-                <span className="hidden sm:inline">{skill.name}</span>
+                <span>{skill.name}</span>
               </div>
             );
           })}

@@ -30,8 +30,9 @@ export default function About() {
             <div className="relative w-full aspect-square mb-4 md:mb-6 rounded-2xl overflow-hidden">
               <Image
                 src="/images/profile.jpeg"
-                alt="Isma"
+                alt="Ismael González — Full-Stack Developer"
                 fill
+                sizes="(max-width: 1024px) 100vw, 40vw"
                 className="object-cover"
                 priority
               />
@@ -40,11 +41,11 @@ export default function About() {
             {/* Info personal */}
             <div className="relative z-10">
               <h3 className="text-xl md:text-2xl font-semibold mb-2">
-                Hey again 👋
+                Hi, I&apos;m Ismael
               </h3>
               
               <p className="text-[#a9b1d6] text-sm leading-relaxed mb-3 md:mb-4">
-                I&apos;m currently training as a full-stack developer, focused on PHP, Laravel, MySQL and React.
+                Full-Stack Developer focused on PHP, Laravel, MySQL and React, based in Girona.
               </p>
 
               {/* Location & Status */}
@@ -77,11 +78,15 @@ export default function About() {
             </h2>
             
             <p className="text-[#a9b1d6] text-sm md:text-base leading-relaxed mb-3 md:mb-4">
-              Hi, I&apos;m Isma — a full-stack developer focused on PHP, Laravel, MySQL and React. I enjoy building clean, well-organized applications where the backend logic is solid and the interface stays simple and clear.
+              Hi, I&apos;m Ismael González — a Full-Stack Developer focused on PHP, Laravel, MySQL and React. I build applications with solid backend logic and simple, clear interfaces, from MVC projects in plain PHP to decoupled Laravel REST APIs with React frontends.
             </p>
             
+            <p className="text-[#a9b1d6] text-sm md:text-base leading-relaxed mb-3 md:mb-4">
+              I completed the Full Stack PHP programme at IT Academy / Barcelona Activa, with around 9 months building projects from scratch and practice oriented to a professional environment: requirements, structured code and databases.
+            </p>
+
             <p className="text-[#a9b1d6] text-sm md:text-base leading-relaxed">
-              I&apos;m coming from operational roles centered on organization and incident management, so I&apos;m used to solving problems, working in a team and adapting quickly. Now I apply that mindset to development: understanding requirements, structuring the code and learning something new with every project.
+              Coming from operational roles centered on organization and incident management, I&apos;m used to solving problems, working in a team and adapting quickly. Mel Lab is my personal space to build and experiment — currently focused on the web, open to hardware, automation and AI projects.
             </p>
           </div>
         </motion.div>

@@ -1,21 +1,14 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #1a1b26;
+  --foreground: #c0caf5;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-poppins);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
 }
 
 body {
@@ -25,7 +18,7 @@ body {
 }
 
 @media (pointer: fine) {
-  * {
+  .custom-cursor-active * {
     cursor: none !important;
   }
 }
@@ -36,13 +29,6 @@ html {
 
 section {
   scroll-margin-top: 100px;
-}
-
-h2 {
-  letter-spacing: -0.02em;
-  font-size: 2.5rem;
-  font-weight: 600;
-  margin-bottom: 3rem;
 }
 
 p {
@@ -60,4 +46,14 @@ p {
 .animate-marquee {
   animation: marquee 40s linear infinite;
   will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee {
+    animation: none;
+  }
+
+  html {
+    scroll-behavior: auto !important;
+  }
 }

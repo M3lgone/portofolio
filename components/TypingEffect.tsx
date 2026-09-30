@@ -13,10 +13,26 @@ export default function TypingEffect({
   speed = 50, 
   className = "" 
 }: TypingEffectProps) {
-  const [displayedText, setDisplayedText] = useState("");
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const [prefersReducedMotion] = useState(
+    () =>
+      typeof window !== "undefined" &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches
+  );
+  const [displayedText, setDisplayedText] = useState(() =>
+    typeof window !== "undefined" &&
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches
+      ? text
+      : ""
+  );
+  const [currentIndex, setCurrentIndex] = useState(() =>
+    typeof window !== "undefined" &&
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches
+      ? text.length
+      : 0
+  );
 
   useEffect(() => {
+    if (prefersReducedMotion) return;
     if (currentIndex < text.length) {
       const timeout = setTimeout(() => {
         setDisplayedText((prev) => prev + text[currentIndex]);
@@ -25,14 +41,16 @@ export default function TypingEffect({
 
       return () => clearTimeout(timeout);
     }
-  }, [currentIndex, text, speed]);
+  }, [currentIndex, text, speed, prefersReducedMotion]);
 
   return (
-    <span className={className}>
-      {displayedText}
-      {currentIndex < text.length && (
-        <span className="animate-pulse">|</span>
-      )}
+    <span className={className} aria-label={text}>
+      <span aria-hidden="true">
+        {displayedText}
+        {currentIndex < text.length && (
+          <span className="animate-pulse">|</span>
+        )}
+      </span>
     </span>
   );
 }
