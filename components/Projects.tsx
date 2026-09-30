@@ -14,6 +14,7 @@ type Project = {
   image?: string;
   imageAlt: string;
   imageFit?: "cover" | "contain";
+  imageBg?: string;
 };
 
 const projects: Project[] = [
@@ -61,6 +62,7 @@ const projects: Project[] = [
     image: "/projects/battle-api-logo.png",
     imageAlt: "Battle Odyssey API logo",
     imageFit: "contain",
+    imageBg: "bg-[#0E2657]",
   },
   {
     badge: "React Client",
@@ -81,14 +83,15 @@ const projects: Project[] = [
     badge: "PHP · Puzzle Game",
     title: "Lights Out",
     description:
-      "Classic Lights Out puzzle game in plain PHP: clicking a light toggles it and its orthogonal neighbors, with the goal of turning off the whole board. Game state handled in a PHP controller, core rules in a dedicated game class and HTML board styled with Tailwind, including win state and restart/randomize.",
+      "Classic Lights Out puzzle in plain PHP with Tailwind: random 3×3 to 6×6 board where each move toggles a cell and its orthogonal neighbours. Move counter, restart, randomize and win detection.",
     tags: [
       { label: "PHP", bg: "bg-[#777bb4]/20", text: "text-[#777bb4]", border: "border-[#777bb4]/30" },
       { label: "TAILWIND", bg: "bg-[#06b6d4]/20", text: "text-[#06b6d4]", border: "border-[#06b6d4]/30" },
-      { label: "GAME", bg: "bg-[#9ece6a]/20", text: "text-[#9ece6a]", border: "border-[#9ece6a]/30" },
     ],
     repo: "https://github.com/M3lgone/lights-out",
+    image: "/projects/lights-out-board.png",
     imageAlt: "Lights Out game board",
+    imageFit: "cover",
   },
 ];
 
@@ -108,7 +111,7 @@ function ProjectCard({ project }: { project: Project }) {
       </div>
 
       {/* Image Preview */}
-      <div className="relative w-full h-64 md:h-80 bg-gradient-to-br from-[#527dc1]/30 to-[#bb9af7]/30 overflow-hidden">
+      <div className={`relative w-full h-64 md:h-80 overflow-hidden ${project.imageBg ?? "bg-gradient-to-br from-[#527dc1]/30 to-[#bb9af7]/30"}`}>
         {project.image ? (
           <Image
             src={project.image}
