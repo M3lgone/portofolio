@@ -3,18 +3,54 @@
 :root {
   --background: #1a1b26;
   --foreground: #c0caf5;
+
+  /* MELAB Fase 1 — tokens mínimos (refinamiento, no rediseño) */
+  --melab-bg: #1a1b26;
+  --melab-surface: #24283b;
+  --melab-text: #c0caf5;
+  --melab-muted: #a9b1d6;
+  --melab-accent: #7aa2f7;
+  --melab-accent-hover: #9db8ff;
+  --melab-accent-ink: #1a1b26;
+  --melab-violet: #bb9af7;
+  --melab-action: #527dc1;
+  --melab-border: rgba(255, 255, 255, 0.1);
+  --melab-ring: #7aa2f7;
+  --melab-radius: 0.75rem;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-poppins);
+
+  --color-melab-bg: var(--melab-bg);
+  --color-melab-surface: var(--melab-surface);
+  --color-melab-text: var(--melab-text);
+  --color-melab-muted: var(--melab-muted);
+  --color-melab-accent: var(--melab-accent);
+  --color-melab-violet: var(--melab-violet);
+  --color-melab-ring: var(--melab-ring);
 }
 
 body {
-  background-color: #1a1b26;
-  color: #c0caf5;
+  background-color: var(--melab-bg);
+  color: var(--melab-text);
   font-family: var(--font-poppins), sans-serif;
+  overflow-x: clip;
+}
+
+::selection {
+  background-color: rgba(187, 154, 247, 0.35);
+  color: #e8eaf6;
+}
+
+/* Focus visible consistente MELAB — solo para elementos modificados en Fase 1
+   y como base para el resto de fases */
+:focus-visible {
+  outline: 2px solid var(--melab-ring);
+  outline-offset: 3px;
+  border-radius: 6px;
 }
 
 @media (pointer: fine) {
@@ -46,6 +82,12 @@ p {
 .animate-marquee {
   animation: marquee 40s linear infinite;
   will-change: transform;
+}
+
+/* Pausa elegante sin convertir el marquee en otro componente */
+.marquee-pause:hover .animate-marquee,
+.marquee-pause:focus-within .animate-marquee {
+  animation-play-state: paused;
 }
 
 @media (prefers-reduced-motion: reduce) {

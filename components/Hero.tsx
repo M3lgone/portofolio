@@ -87,8 +87,9 @@ export default function Hero() {
     },
   ];
 
-  const duplicatedSkills = [...skills, ...skills, ...skills, ...skills];
-  const [isHovering, setIsHovering] = useState(false);
+  // Dos copias para el loop -50%: una visible, una solo visual (aria-hidden).
+  const marqueeCopies = [false, true];
+  const [isPreviewVisible, setIsPreviewVisible] = useState(false);
 
   return (
     <motion.section
@@ -96,94 +97,112 @@ export default function Hero() {
       initial={{ opacity: 0, y: 40 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8 }}
-      className="relative min-h-screen flex flex-col items-start justify-start pt-32 md:pt-48 pb-12"
+      className="relative flex min-h-[svh] flex-col overflow-clip pb-0"
     >
-      {/* Glow background con parallax */}
+      {/* Glow decorativo — reducido a un solo halo, contenido por overflow-clip */}
       <motion.div
-        className="absolute inset-0 -z-10 flex justify-center"
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 -z-10 flex justify-center"
         style={{
           y: glowY,
         }}
       >
-        <div className="w-[400px] md:w-[600px] h-[400px] md:h-[600px] bg-[#7aa2f7] opacity-20 blur-[150px] rounded-full"></div>
+        <div className="h-[380px] w-[340px] rounded-full bg-[#7aa2f7] opacity-15 blur-[120px] md:h-[520px] md:w-[560px]"></div>
       </motion.div>
 
-      <Container>
-        <div className="max-w-3xl">
-          <p className="text-xs md:text-sm font-semibold tracking-[0.25em] text-[#7aa2f7] mb-4">
-            MELAB · Mel Lab
-          </p>
-          <h1 className="text-4xl md:text-6xl font-semibold leading-tight tracking-tight bg-gradient-to-r from-[#7aa2f7] to-[#bb9af7] bg-clip-text text-transparent mb-3">
-            Ismael González
-          </h1>
+      <div className="flex flex-1 flex-col justify-center pb-10 pt-28 md:pb-14 md:pt-40">
+        <Container>
+          <div className="max-w-2xl">
+            <p className="mb-5 text-xs font-semibold uppercase tracking-[0.3em] text-[#7aa2f7] md:text-sm">
+              MELAB · Mel Lab
+            </p>
+            <h1 className="mb-4 text-balance bg-gradient-to-r from-[#7aa2f7] via-[#93aef7] to-[#bb9af7] bg-clip-text pb-1 text-5xl font-semibold leading-[1.05] tracking-tight text-transparent md:text-6xl lg:text-7xl">
+              Ismael González
+            </h1>
 
-          <p className="text-xl md:text-2xl font-medium text-[#c0caf5] mb-4">
-            Full-Stack Developer
-          </p>
+            <p className="mb-3 text-2xl font-semibold tracking-tight text-[#c0caf5] md:text-3xl">
+              Full-Stack Developer
+            </p>
 
-          <p className="text-base md:text-lg font-medium text-[#c0caf5] mb-4">
-            PHP · Laravel · MySQL · React
-          </p>
+            <p className="mb-5 text-xs font-medium uppercase tracking-[0.2em] text-[#a9b1d6] md:text-sm">
+              PHP · Laravel · MySQL · React
+            </p>
 
-          <p className="text-lg md:text-xl text-gray-400 leading-relaxed">
-            <TypingEffect
-              text="Building full-stack projects with solid backend logic and modern, intuitive frontend"
-              speed={30}
-            />
-          </p>
-          <div className="relative inline-flex flex-wrap items-center gap-3 md:gap-4 mt-8">
-            <motion.a
-              href="#projects"
-              onMouseEnter={() => setIsHovering(true)}
-              onMouseLeave={() => setIsHovering(false)}
-              className="inline-block px-6 md:px-8 py-2.5 md:py-3 bg-[#527dc1] text-[#e0f2fe] rounded-lg font-medium hover:bg-[#4266a8] transition-colors hover:shadow-lg hover:shadow-[#527dc1]/50 relative z-20 text-sm md:text-base focus-visible:outline-2 focus-visible:outline-[#7aa2f7]"
-              whileTap={{ scale: 0.95 }}
-            >
-              View Projects
-            </motion.a>
+            <p className="max-w-xl text-base leading-relaxed text-[#a9b1d6] md:text-lg">
+              <TypingEffect
+                text="Building full-stack projects with solid backend logic and modern, intuitive frontend"
+                speed={30}
+              />
+            </p>
+            <div className="relative mt-10 inline-flex max-w-full flex-wrap items-center gap-3 md:gap-4">
+              <motion.a
+                href="#projects"
+                onMouseEnter={() => setIsPreviewVisible(true)}
+                onMouseLeave={() => setIsPreviewVisible(false)}
+                onFocus={() => setIsPreviewVisible(true)}
+                onBlur={() => setIsPreviewVisible(false)}
+                className="relative z-20 inline-flex min-h-[44px] items-center justify-center rounded-lg bg-[#7aa2f7] px-7 py-3 text-sm font-semibold text-[#1a1b26] transition-colors hover:bg-[#9db8ff] hover:shadow-lg hover:shadow-[#7aa2f7]/25 md:text-[15px]"
+                whileTap={{ scale: 0.97 }}
+              >
+                View Projects
+              </motion.a>
 
-            <motion.a
-              href="#contact"
-              className="inline-block px-6 md:px-8 py-2.5 md:py-3 bg-transparent border border-[#7aa2f7] text-[#7aa2f7] rounded-lg font-medium hover:bg-[#527dc1]/10 transition-colors relative z-20 text-sm md:text-base focus-visible:outline-2 focus-visible:outline-[#7aa2f7]"
-              whileTap={{ scale: 0.95 }}
-            >
-              Contact
-            </motion.a>
+              <motion.a
+                href="#contact"
+                className="relative z-20 inline-flex min-h-[44px] items-center justify-center rounded-lg border border-[#7aa2f7]/60 bg-transparent px-7 py-3 text-sm font-semibold text-[#9db8ff] transition-colors hover:border-[#7aa2f7] hover:bg-[#7aa2f7]/10 md:text-[15px]"
+                whileTap={{ scale: 0.97 }}
+              >
+                Contact
+              </motion.a>
 
-            {/* Preview Cards - Solo en desktop */}
-            <div className="hidden md:block">
-              <ProjectPreviewCards isHovered={isHovering} />
+              {/* Preview Cards - Solo en desktop amplio, decorativas */}
+              <div className="hidden lg:block" aria-hidden="true">
+                <ProjectPreviewCards isHovered={isPreviewVisible} />
+              </div>
             </div>
           </div>
-        </div>
-      </Container>
+        </Container>
+      </div>
 
-      {/* Carrusel de Skills al final del Hero */}
-      <div className="absolute bottom-20 md:bottom-32 left-0 right-0 w-full overflow-hidden py-4 md:py-8">
-        {/* Blur gradient izquierdo */}
-        <div className="absolute left-0 top-0 bottom-0 w-16 md:w-32 bg-gradient-to-r from-[#1a1b26] to-transparent z-10 pointer-events-none"></div>
+      {/* Marquee en flujo normal: sin absolute, sin solape con CTAs */}
+      <div className="marquee-pause relative w-full overflow-hidden py-5 md:py-7">
+        {/* Fades laterales */}
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute bottom-0 left-0 top-0 z-10 w-16 bg-gradient-to-r from-[#1a1b26] to-transparent md:w-32"
+        ></div>
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute bottom-0 right-0 top-0 z-10 w-16 bg-gradient-to-l from-[#1a1b26] to-transparent md:w-32"
+        ></div>
 
-        {/* Blur gradient derecho */}
-        <div className="absolute right-0 top-0 bottom-0 w-16 md:w-32 bg-gradient-to-l from-[#1a1b26] to-transparent z-10 pointer-events-none"></div>
-
-        {/* Carrusel infinito */}
-        <div className="flex gap-4 md:gap-6 animate-marquee">
-          {duplicatedSkills.map((skill, index) => {
-            const Icon = skill.icon;
-            return (
-              <div
-                key={`${skill.name}-${index}`}
-                className={`flex items-center gap-1.5 md:gap-2 px-3 md:px-5 py-2 md:py-2.5 rounded-full bg-gradient-to-r ${skill.color} border ${skill.border} ${skill.text} font-medium text-xs md:text-sm whitespace-nowrap backdrop-blur-sm`}
-              >
-                <Icon
-                  size={16}
-                  className="md:w-[18px] md:h-[18px]"
-                  style={{ color: skill.iconColor }}
-                />
-                <span>{skill.name}</span>
-              </div>
-            );
-          })}
+        {/* Pista infinita: 2 copias idénticas, la segunda oculta a AT */}
+        <div className="animate-marquee flex w-max">
+          {marqueeCopies.map((hidden, copyIndex) => (
+            <ul
+              key={copyIndex}
+              aria-hidden={hidden || undefined}
+              className="flex shrink-0 items-center gap-4 pr-4 md:gap-6 md:pr-6"
+            >
+              {[...skills, ...skills].map((skill, index) => {
+                const Icon = skill.icon;
+                return (
+                  <li
+                    key={`${skill.name}-${copyIndex}-${index}`}
+                    className={`flex items-center gap-1.5 whitespace-nowrap rounded-full border bg-gradient-to-r px-3 py-2 text-xs font-medium backdrop-blur-sm md:gap-2 md:px-5 md:py-2.5 md:text-sm ${skill.color} ${skill.border} ${skill.text}`}
+                  >
+                    <Icon
+                      size={16}
+                      aria-hidden="true"
+                      className="md:h-[18px] md:w-[18px]"
+                      style={{ color: skill.iconColor }}
+                    />
+                    <span>{skill.name}</span>
+                  </li>
+                );
+              })}
+            </ul>
+          ))}
         </div>
       </div>
     </motion.section>
