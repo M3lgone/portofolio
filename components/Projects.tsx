@@ -125,15 +125,16 @@ function FeaturedFront({ disableMotion }: { disableMotion: boolean }) {
           </div>
         </div>
 
-        {/* Preview real del juego */}
-        <figure className="relative order-2 min-h-0 border-t border-white/10 lg:border-l lg:border-t-0">
-          <div className="relative aspect-video h-full w-full overflow-hidden bg-[#0E2657]">
+        {/* Preview real del juego — asset completo, sin recortes */}
+        <figure className="relative order-2 flex min-h-0 flex-col border-t border-white/10 lg:border-l lg:border-t-0">
+          <div className="flex flex-1 items-center justify-center overflow-hidden bg-[#14151f] p-4 md:p-6">
             <Image
               src="/projects/battle-front.webp"
               alt="Battle Odyssey React frontend: turn-based combat screen with HP and MP bars"
-              fill
+              width={1280}
+              height={606}
               sizes="(max-width: 1024px) 100vw, 55vw"
-              className="object-cover object-top"
+              className="h-auto w-full rounded-lg border border-white/10 object-contain"
             />
           </div>
           <figcaption className="border-t border-white/10 px-6 py-3 text-xs text-[#a9b1d6]/70 md:px-10">
@@ -218,6 +219,49 @@ const supporting: SupportingProject[] = [
   },
 ];
 
+function ApiCodePreview() {
+  // Código REAL de routes/api.php (M3lgone/battle-odyssey-api) — recorte de
+  // los endpoints de games/battles. Solo presentación; el texto no se altera.
+  const lines: { method: string; path: string; handler: string }[] = [
+    { method: "post", path: "'/games'", handler: "[GameController::class, 'store']" },
+    { method: "get", path: "'/games'", handler: "[GameController::class, 'index']" },
+    { method: "post", path: "'/battles'", handler: "[BattleController::class, 'store']" },
+    { method: "put", path: "'/battles/{battle}'", handler: "[BattleController::class, 'update']" },
+    { method: "get", path: "'/battles/{battle}'", handler: "[BattleController::class, 'show']" },
+    { method: "get", path: "'/games/{game}/battles'", handler: "[BattleController::class, 'index']" },
+  ];
+
+  return (
+    <div
+      aria-hidden="true"
+      className="flex aspect-[16/10] w-full flex-col overflow-hidden bg-[#14151f]"
+    >
+      <div className="flex items-center gap-2 border-b border-white/10 px-4 py-2.5">
+        <span className="font-mono text-[11px] text-[#a9b1d6]/70">
+          routes/api.php
+        </span>
+        <span className="rounded-full border border-[#7aa2f7]/40 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-[0.14em] text-[#7aa2f7]">
+          v1
+        </span>
+      </div>
+      <pre className="flex flex-1 flex-col justify-center overflow-hidden px-4 py-3 font-mono text-[11px] leading-[1.9] md:text-xs">
+        <code>
+          {lines.map((line) => (
+            <span key={`${line.method}-${line.path}`} className="block truncate">
+              <span className="text-[#a9b1d6]/60">Route::</span>
+              <span className="text-[#7aa2f7]">{line.method}</span>
+              <span className="text-[#a9b1d6]">
+                (<span className="text-[#bb9af7]">{line.path}</span>,{" "}
+                {line.handler});
+              </span>
+            </span>
+          ))}
+        </code>
+      </pre>
+    </div>
+  );
+}
+
 function SupportingCard({
   project,
   disableMotion,
@@ -237,6 +281,9 @@ function SupportingCard({
       viewport={{ once: true, amount: 0.25 }}
       className="group flex scroll-mt-28 flex-col overflow-hidden rounded-xl border border-white/10 bg-white/[0.02] transition-colors hover:border-[#7aa2f7]/50"
     >
+      {project.id === "project-api" ? (
+        <ApiCodePreview />
+      ) : (
       <div
         className={`relative aspect-[16/10] w-full overflow-hidden ${project.imageBg}`}
       >
@@ -253,6 +300,7 @@ function SupportingCard({
           }
         />
       </div>
+      )}
       <div className="flex flex-1 flex-col p-5 md:p-6">
         <p className="mb-2 text-[11px] font-semibold uppercase tracking-[0.2em] text-[#7aa2f7]">
           {project.eyebrow}
