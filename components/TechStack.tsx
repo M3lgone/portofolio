@@ -14,7 +14,7 @@ const groups: { title: string; items: string[] }[] = [
   },
   {
     title: "Databases",
-    items: ["MySQL", "PostgreSQL", "MongoDB", "SQLite"],
+    items: ["MySQL", "MongoDB", "SQLite"],
   },
   {
     title: "Tools & Testing",

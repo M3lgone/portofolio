@@ -76,9 +76,21 @@ export default function About() {
             <h2 className="text-2xl md:text-3xl font-semibold tracking-tight mb-4 md:mb-6">
               A little bit about me
             </h2>
-            
+
+            <p className="text-[#a9b1d6] text-sm md:text-base leading-relaxed mb-3 md:mb-4">
+              I enjoy turning problems into structured, useful software. What I like most about development is figuring out how things should work, breaking problems down into smaller pieces, and building solutions that are both technically sound and easy to use.
+            </p>
+
+            <p className="text-[#a9b1d6] text-sm md:text-base leading-relaxed mb-3 md:mb-4">
+              I care about clean architecture, meaningful interfaces, and the small details that make an application feel coherent. I like understanding the problem behind a feature rather than simply making it work.
+            </p>
+
+            <p className="text-[#a9b1d6] text-sm md:text-base leading-relaxed mb-3 md:mb-4">
+              Outside of coding, I enjoy staying active, spending time outdoors, discovering new places, and spending time with friends and family. I value discipline and consistency, and I&apos;m naturally curious about the world around me. I enjoy exploring new ideas by trying things for myself, whether that&apos;s a new technology, a creative project, or something completely unrelated to programming.
+            </p>
+
             <p className="text-[#a9b1d6] text-sm md:text-base leading-relaxed">
-              Coming from operational roles centered on organization and incident management, I&apos;m used to solving problems and working in a team.
+              Mel Lab is my space to explore that mindset through different kinds of projects, from web applications and games to experiments with hardware, automation, and other technologies.
             </p>
           </div>
         </motion.div>
