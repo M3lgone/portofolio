@@ -29,10 +29,10 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "/projects/battle-front-2.webp",
-        width: 1280,
-        height: 800,
-        alt: "Battle Odyssey — React frontend built by Ismael González",
+        url: "/melab-og.png",
+        width: 704,
+        height: 356,
+        alt: "Mel Lab — Ismael González · Full-Stack Developer",
       },
     ],
   },
@@ -41,7 +41,7 @@ export const metadata: Metadata = {
     title: "Mel Lab — Ismael González · Full-Stack Developer",
     description:
       "Full-Stack Developer focused on PHP, Laravel, MySQL and React. Real projects with REST APIs and databases.",
-    images: ["/projects/battle-front-2.webp"],
+    images: ["/melab-og.png"],
   },
 };
 
