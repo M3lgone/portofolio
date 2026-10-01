@@ -27,17 +27,39 @@ export const metadata: Metadata = {
     url: "https://mellab.vercel.app",
     siteName: "Mel Lab",
     type: "website",
+    images: [
+      {
+        url: "/projects/battle-front-2.webp",
+        width: 1280,
+        height: 800,
+        alt: "Battle Odyssey — React frontend built by Ismael González",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Mel Lab — Ismael González · Full-Stack Developer",
     description:
       "Full-Stack Developer focused on PHP, Laravel, MySQL and React. Real projects with REST APIs and databases.",
+    images: ["/projects/battle-front-2.webp"],
   },
 };
 
 export const viewport: Viewport = {
   themeColor: "#1a1b26",
+};
+
+// JSON-LD Person — solo datos ya públicos en el portfolio.
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Ismael González",
+  url: "https://mellab.vercel.app",
+  jobTitle: "Full-Stack Developer",
+  sameAs: [
+    "https://github.com/M3lgone",
+    "https://www.linkedin.com/in/ismael-gonzalez-nestal/",
+  ],
 };
 
 export default function RootLayout({
@@ -64,6 +86,10 @@ export default function RootLayout({
         <div className="max-w-6xl mx-auto">
           {children}
         </div>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
       </body>
     </html>
   );
