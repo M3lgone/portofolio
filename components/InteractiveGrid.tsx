@@ -1,10 +1,29 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
+
+const SPACING = 50;
+const DOT_RADIUS = 2;
+const GLOW_RADIUS = 150;
 
 export default function InteractiveGrid() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const mousePos = useRef({ x: 0, y: 0 });
+  // Loop dinámico solo con puntero fino y sin reduced-motion.
+  const [dynamic, setDynamic] = useState(false);
+
+  useEffect(() => {
+    const fine = window.matchMedia("(pointer: fine)");
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const compute = () => setDynamic(fine.matches && !reduced.matches);
+    compute();
+    fine.addEventListener("change", compute);
+    reduced.addEventListener("change", compute);
+    return () => {
+      fine.removeEventListener("change", compute);
+      reduced.removeEventListener("change", compute);
+    };
+  }, []);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -13,78 +32,98 @@ export default function InteractiveGrid() {
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
-    // Ajustar tamaño del canvas
-    const resizeCanvas = () => {
+    const resize = () => {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
     };
-    resizeCanvas();
-    window.addEventListener("resize", resizeCanvas);
+    resize();
 
-    // Configuración del grid
-    const spacing = 50; // Espacio entre puntos
-    const dotRadius = 2; // Tamaño del punto
-    const glowRadius = 150; // Radio de influencia del mouse
-
-    // Tracking del mouse
-    const handleMouseMove = (e: MouseEvent) => {
-      mousePos.current = { x: e.clientX, y: e.clientY };
-    };
-    window.addEventListener("mousemove", handleMouseMove);
-
-    // Animación del grid
-    let rafId = 0;
-    const animate = () => {
+    const draw = (interactive: boolean) => {
+      const { x: mx, y: my } = mousePos.current;
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-      if (!document.hidden) {
-        const cols = Math.ceil(canvas.width / spacing);
-        const rows = Math.ceil(canvas.height / spacing);
+      const cols = Math.ceil(canvas.width / SPACING);
+      const rows = Math.ceil(canvas.height / SPACING);
 
-        for (let i = 0; i < cols; i++) {
-          for (let j = 0; j < rows; j++) {
-            const x = i * spacing;
-            const y = j * spacing;
+      for (let i = 0; i < cols; i++) {
+        for (let j = 0; j < rows; j++) {
+          const x = i * SPACING;
+          const y = j * SPACING;
 
-            // Calcular distancia al mouse
-            const dx = mousePos.current.x - x;
-            const dy = mousePos.current.y - y;
+          let opacity = 0.15;
+          let size = DOT_RADIUS;
+
+          if (interactive) {
+            const dx = mx - x;
+            const dy = my - y;
             const distance = Math.sqrt(dx * dx + dy * dy);
 
-            // Calcular opacidad basada en distancia
-            let opacity = 0.15;
-            let size = dotRadius;
-
-            if (distance < glowRadius) {
-              const influence = 1 - distance / glowRadius;
+            if (distance < GLOW_RADIUS) {
+              const influence = 1 - distance / GLOW_RADIUS;
               opacity = 0.15 + influence * 0.6;
-              size = dotRadius + influence * 3;
+              size = DOT_RADIUS + influence * 3;
             }
-
-            // Dibujar punto
-            ctx.beginPath();
-            ctx.arc(x, y, size, 0, Math.PI * 2);
-            ctx.fillStyle = `rgba(122, 162, 247, ${opacity})`;
-            ctx.fill();
           }
+
+          ctx.beginPath();
+          ctx.arc(x, y, size, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(122, 162, 247, ${opacity})`;
+          ctx.fill();
         }
       }
-
-      rafId = requestAnimationFrame(animate);
     };
 
-    rafId = requestAnimationFrame(animate);
+    // Sin loop dinámico: un único frame estático (misma densidad, sin coste).
+    if (!dynamic) {
+      draw(false);
+      const onResize = () => draw(false);
+      window.addEventListener("resize", onResize);
+      return () => window.removeEventListener("resize", onResize);
+    }
+
+    const onMouseMove = (e: MouseEvent) => {
+      mousePos.current = { x: e.clientX, y: e.clientY };
+    };
+    window.addEventListener("mousemove", onMouseMove);
+    window.addEventListener("resize", resize);
+
+    let rafId = 0;
+    let running = false;
+
+    const loop = () => {
+      if (!running) return;
+      // Pausa real cuando la pestaña no está visible.
+      if (!document.hidden) draw(true);
+      rafId = requestAnimationFrame(loop);
+    };
+    const start = () => {
+      if (running || document.hidden) return;
+      running = true;
+      rafId = requestAnimationFrame(loop);
+    };
+    const stop = () => {
+      running = false;
+      cancelAnimationFrame(rafId);
+    };
+    const onVisibility = () => {
+      if (document.hidden) stop();
+      else start();
+    };
+    document.addEventListener("visibilitychange", onVisibility);
+    start();
 
     return () => {
-      cancelAnimationFrame(rafId);
-      window.removeEventListener("resize", resizeCanvas);
-      window.removeEventListener("mousemove", handleMouseMove);
+      stop();
+      document.removeEventListener("visibilitychange", onVisibility);
+      window.removeEventListener("mousemove", onMouseMove);
+      window.removeEventListener("resize", resize);
     };
-  }, []);
+  }, [dynamic]);
 
   return (
     <canvas
       ref={canvasRef}
+      aria-hidden="true"
       className="fixed inset-0 -z-10 pointer-events-none"
     />
   );
