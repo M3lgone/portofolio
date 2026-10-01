@@ -125,17 +125,41 @@ function FeaturedFront({ disableMotion }: { disableMotion: boolean }) {
           </div>
         </div>
 
-        {/* Preview real del juego — asset completo, sin recortes */}
+        {/* Preview del juego — screenshot + GIF en un único marco editorial */}
         <figure className="relative order-2 flex min-h-0 flex-col border-t border-white/10 lg:border-l lg:border-t-0">
-          <div className="flex flex-1 items-center justify-center overflow-hidden bg-[#14151f] p-4 md:p-6">
-            <Image
-              src="/projects/battle-front.webp"
-              alt="Battle Odyssey React frontend: turn-based combat screen with HP and MP bars"
-              width={1280}
-              height={606}
-              sizes="(max-width: 1024px) 100vw, 55vw"
-              className="h-auto w-full rounded-lg border border-white/10 object-contain"
-            />
+          <div className="flex flex-1 items-center justify-center overflow-hidden bg-[#14151f] p-3 md:p-4">
+            <div className="w-full overflow-hidden rounded-lg border border-white/10">
+              <Image
+                src="/projects/character-selection.png"
+                alt="Battle Odyssey character selection screen with heroes, stats and skills"
+                width={1906}
+                height={896}
+                sizes="(max-width: 1024px) 100vw, 55vw"
+                className="h-auto w-full object-contain"
+              />
+              <div className="border-t border-white/10">
+                {disableMotion ? (
+                  <Image
+                    src="/projects/battle-front.webp"
+                    alt="Battle Odyssey React frontend: turn-based combat screen with HP and MP bars"
+                    width={1280}
+                    height={606}
+                    sizes="(max-width: 1024px) 100vw, 55vw"
+                    className="h-auto w-full object-contain"
+                  />
+                ) : (
+                  <img
+                    src="/projects/battle-gameplay.gif"
+                    alt="Battle Odyssey gameplay: animated turn-based combat with HP and MP bars"
+                    width={1894}
+                    height={892}
+                    loading="lazy"
+                    decoding="async"
+                    className="h-auto w-full object-contain"
+                  />
+                )}
+              </div>
+            </div>
           </div>
           <figcaption className="border-t border-white/10 px-6 py-3 text-xs text-[#a9b1d6]/70 md:px-10">
             In-game combat — interactive application, not a static mockup.
