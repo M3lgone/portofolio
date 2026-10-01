@@ -176,8 +176,8 @@ export default function Hero() {
           className="pointer-events-none absolute bottom-0 right-0 top-0 z-10 w-16 bg-gradient-to-l from-[#1a1b26] to-transparent md:w-32"
         ></div>
 
-        {/* Pista infinita: 2 copias idénticas, la segunda oculta a AT */}
-        <div className="animate-marquee flex w-max">
+        {/* Pista infinita decorativa: oculta a AT para no duplicar lectura */}
+        <div className="animate-marquee flex w-max" aria-hidden="true">
           {marqueeCopies.map((hidden, copyIndex) => (
             <ul
               key={copyIndex}
@@ -204,6 +204,12 @@ export default function Hero() {
             </ul>
           ))}
         </div>
+        {/* Alternativa accesible: las tecnologías, una sola vez y sin duplicar */}
+        <ul className="sr-only" aria-label="Technologies">
+          {skills.map((skill) => (
+            <li key={skill.name}>{skill.name}</li>
+          ))}
+        </ul>
       </div>
     </motion.section>
   );

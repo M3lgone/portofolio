@@ -73,6 +73,7 @@ export default function Navbar() {
         <div className="nav-links relative hidden md:flex gap-6 text-sm text-[#a9b1d6]">
           <motion.a
             href="#experience"
+            aria-current={active === "experience" ? "location" : undefined}
             className="relative hover:text-[#7aa2f7] transition"
             ref={(el) => { linkRefs.current["experience"] = el; }}
           >
@@ -81,6 +82,7 @@ export default function Navbar() {
 
           <motion.a
             href="#projects"
+            aria-current={active === "projects" ? "location" : undefined}
             className="relative hover:text-[#7aa2f7] transition"
             ref={(el) => { linkRefs.current["projects"] = el; }}
           >
@@ -89,6 +91,7 @@ export default function Navbar() {
 
           <motion.a
             href="#about-section"
+            aria-current={active === "about-section" ? "location" : undefined}
             className="relative hover:text-[#7aa2f7] transition"
             ref={(el) => { linkRefs.current["about-section"] = el; }}
           >
@@ -97,6 +100,7 @@ export default function Navbar() {
 
           <motion.a
             href="#stack"
+            aria-current={active === "stack" ? "location" : undefined}
             className="relative hover:text-[#7aa2f7] transition"
             ref={(el) => { linkRefs.current["stack"] = el; }}
           >
@@ -105,6 +109,7 @@ export default function Navbar() {
 
           <motion.a
             href="#contact"
+            aria-current={active === "contact" ? "location" : undefined}
             className="relative hover:text-[#7aa2f7] transition"
             ref={(el) => { linkRefs.current["contact"] = el; }}
           >
@@ -122,7 +127,8 @@ export default function Navbar() {
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
           aria-expanded={mobileMenuOpen}
-          className="md:hidden text-[#7aa2f7] p-2 focus-visible:outline-2 focus-visible:outline-[#7aa2f7] rounded"
+          aria-controls="mobile-menu"
+          className="md:hidden inline-flex min-h-[44px] min-w-[44px] items-center justify-center text-[#7aa2f7] focus-visible:outline-2 focus-visible:outline-[#7aa2f7] rounded"
         >
           {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
@@ -135,22 +141,23 @@ export default function Navbar() {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
+            id="mobile-menu"
             className="md:hidden border-t border-white/10 bg-[#1a1b26]/95 backdrop-blur-md"
           >
             <div className="flex flex-col py-4 px-6 gap-4">
-              <a href="#experience" onClick={handleLinkClick} className="text-base py-2 transition text-[#a9b1d6] hover:text-[#7aa2f7]">
+              <a href="#experience" onClick={handleLinkClick} className="flex min-h-[44px] items-center text-base transition text-[#a9b1d6] hover:text-[#7aa2f7]">
                 Experience
               </a>
-              <a href="#projects" onClick={handleLinkClick} className="text-base py-2 transition text-[#a9b1d6] hover:text-[#7aa2f7]">
+              <a href="#projects" onClick={handleLinkClick} className="flex min-h-[44px] items-center text-base transition text-[#a9b1d6] hover:text-[#7aa2f7]">
                 Projects
               </a>
-              <a href="#about-section" onClick={handleLinkClick} className="text-base py-2 transition text-[#a9b1d6] hover:text-[#7aa2f7]">
+              <a href="#about-section" onClick={handleLinkClick} className="flex min-h-[44px] items-center text-base transition text-[#a9b1d6] hover:text-[#7aa2f7]">
                 About
               </a>
-              <a href="#stack" onClick={handleLinkClick} className="text-base py-2 transition text-[#a9b1d6] hover:text-[#7aa2f7]">
+              <a href="#stack" onClick={handleLinkClick} className="flex min-h-[44px] items-center text-base transition text-[#a9b1d6] hover:text-[#7aa2f7]">
                 Stack
               </a>
-              <a href="#contact" onClick={handleLinkClick} className="text-base py-2 transition text-[#a9b1d6] hover:text-[#7aa2f7]">
+              <a href="#contact" onClick={handleLinkClick} className="flex min-h-[44px] items-center text-base transition text-[#a9b1d6] hover:text-[#7aa2f7]">
                 Contact
               </a>
             </div>
