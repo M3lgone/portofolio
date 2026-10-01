@@ -69,7 +69,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <p className="mt-6 text-xs text-[#a9b1d6]/70 md:mt-8">
+        <p className="mt-6 text-center text-xs text-[#a9b1d6]/70 md:mt-8">
           © 2026 Mel Lab · Ismael González
         </p>
       </Container>
