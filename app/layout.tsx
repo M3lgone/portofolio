@@ -1,7 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Poppins } from "next/font/google";
 import "./globals.css";
-import ScrollToTop from "@/components/ScrollToTop";
 import CustomCursor from "@/components/CustomCursor";
 import ScrollProgress from "@/components/ScrollProgress";
 import BackgroundGlow from "@/components/BackgroundGlow";
@@ -51,7 +50,6 @@ export default function RootLayout({
       <body
         className={`${poppins.variable} font-sans antialiased`}>
         
-        <ScrollToTop />
         <CustomCursor />
         <ScrollProgress />
         <BackgroundGlow />
