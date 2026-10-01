@@ -4,19 +4,13 @@
   --background: #1a1b26;
   --foreground: #c0caf5;
 
-  /* MELAB Fase 1 — tokens mínimos (refinamiento, no rediseño) */
+  /* MELAB — sistema mínimo: fondo, texto, acentos y foco */
   --melab-bg: #1a1b26;
-  --melab-surface: #24283b;
   --melab-text: #c0caf5;
   --melab-muted: #a9b1d6;
   --melab-accent: #7aa2f7;
-  --melab-accent-hover: #9db8ff;
-  --melab-accent-ink: #1a1b26;
   --melab-violet: #bb9af7;
-  --melab-action: #527dc1;
-  --melab-border: rgba(255, 255, 255, 0.1);
   --melab-ring: #7aa2f7;
-  --melab-radius: 0.75rem;
 }
 
 @theme inline {
@@ -25,7 +19,6 @@
   --font-sans: var(--font-poppins);
 
   --color-melab-bg: var(--melab-bg);
-  --color-melab-surface: var(--melab-surface);
   --color-melab-text: var(--melab-text);
   --color-melab-muted: var(--melab-muted);
   --color-melab-accent: var(--melab-accent);

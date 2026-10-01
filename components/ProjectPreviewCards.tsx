@@ -15,7 +15,6 @@ export default function ProjectPreviewCards({
   const projects = [
     {
       id: 1,
-      name: "To Do Ghost",
       color: "from-[#61dafb]/30 to-[#bb9af7]/30",
       position: "top-[-190px] left-[-160px]",
       rotation: -12,
@@ -25,7 +24,6 @@ export default function ProjectPreviewCards({
     },
     {
       id: 2,
-      name: "Battle Odyssey · Livewire",
       color: "from-[#bb9af7]/30 to-[#f7768e]/30",
       position: "top-[-205px] left-[-20px]",
       rotation: -4,
@@ -35,7 +33,6 @@ export default function ProjectPreviewCards({
     },
     {
       id: 3,
-      name: "Battle Odyssey · API",
       color: "from-[#7dcfff]/30 to-[#9ece6a]/30",
       position: "top-[-205px] right-[-20px]",
       rotation: 4,
@@ -45,7 +42,6 @@ export default function ProjectPreviewCards({
     },
     {
       id: 4,
-      name: "Battle Odyssey · React",
       color: "from-[#e0af68]/30 to-[#7aa2f7]/30",
       position: "top-[-190px] right-[-160px]",
       rotation: 12,
