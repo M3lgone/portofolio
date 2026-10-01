@@ -49,7 +49,7 @@ export default function ProjectPreviewCards({
       color: "from-[#e0af68]/30 to-[#7aa2f7]/30",
       position: "top-[-190px] right-[-160px]",
       rotation: 12,
-      image: "/projects/battle-front.png",
+      image: "/projects/battle-front.webp",
       imageAlt: "",
       imageFit: "cover" as const,
     },

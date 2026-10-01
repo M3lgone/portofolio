@@ -50,7 +50,7 @@ export default function About() {
           >
             <div className="relative aspect-square w-full overflow-hidden rounded-xl border border-white/10">
               <Image
-                src="/images/profile.jpeg"
+                src="/images/profile-fixed.webp"
                 alt="Ismael González — Full-Stack Developer"
                 fill
                 sizes="(max-width: 1024px) 100vw, 40vw"

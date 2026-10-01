@@ -130,10 +130,10 @@ function FeaturedFront({ disableMotion }: { disableMotion: boolean }) {
           <div className="flex flex-1 items-center overflow-hidden bg-[#14151f] p-3 md:p-4">
             <div className="flex w-full flex-col gap-4 md:gap-5">
               <Image
-                src="/projects/battle-front-2.png"
+                src="/projects/battle-front-2.webp"
                 alt="Battle Odyssey frontend overview"
-                width={2560}
-                height={1600}
+                width={1280}
+                height={800}
                 sizes="(max-width: 1024px) 100vw, 55vw"
                 className="h-auto w-full rounded-md"
               />
@@ -147,15 +147,25 @@ function FeaturedFront({ disableMotion }: { disableMotion: boolean }) {
                   className="h-auto w-full rounded-md"
                 />
               ) : (
-                <img
-                  src="/projects/battle-gameplay.gif"
-                  alt="Battle Odyssey gameplay: animated turn-based combat with HP and MP bars"
-                  width={1894}
-                  height={892}
-                  loading="lazy"
-                  decoding="async"
+                <video
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  preload="metadata"
+                  poster="/projects/battle-front.webp"
+                  aria-label="Battle Odyssey gameplay: animated turn-based combat with HP and MP bars"
                   className="h-auto w-full rounded-md"
-                />
+                >
+                  <source
+                    src="/projects/battle-gameplay.webm"
+                    type="video/webm"
+                  />
+                  <source
+                    src="/projects/battle-gameplay.mp4"
+                    type="video/mp4"
+                  />
+                </video>
               )}
             </div>
           </div>
